@@ -22,13 +22,16 @@ function App() {
         * */
         /* 아래 처럼 하면, 처음에는 useState값으로 인해 초기값은 없다가,
          * 추가해준것은 들어가고, 그리고 current 기준으로 또 추가되고 하면서 누적된다.
-         *
+         * 아래는 값을 보내는 두가지의 방식이다
          **/
+        
+        //함수를 보내는방식
         setTodos(currentArray => [toDo,...currentArray]);
+        //값을 보내는 방식
         setTodo("");
 
     };
-    console.log(toDos);
+
     return (
         <div>
             <h1>My To Dos ({toDos.length})</h1>
@@ -41,6 +44,13 @@ function App() {
                 />
                 <button>Add To Do</button>
             </form>
+            <hr/>
+            <ul>
+                {toDos.map((item,index)=>(
+                    <li key={index}>{item}</li>
+                    )
+                )}
+            </ul>
         </div>
     );
 }
